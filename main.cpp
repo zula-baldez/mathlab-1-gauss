@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    Matrix rm;
+    RandomMatrix rm(10);
     rm.solve_gauss(cin, cout);
 
 

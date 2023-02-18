@@ -40,14 +40,13 @@ Row &Matrix::operator[](int index) const {
 }
 
 
-void Matrix::diagonalize() {
+void Matrix::triangulation() {
     for (int j = 1; j < m_data.size(); j++) {
         //find first row with not zero j element
         for (int row_index = j; row_index <= m_data.size(); row_index++) {
             if (!equals((*this)[row_index][j], 0)) {
                 if (row_index != j) {
-                    det_signum_changes++;
-                    std::swap((*this)[j], (*this)[row_index]);
+                    (*this)[j] = (*this)[row_index] + (*this)[j];
                 }
                 break;
 
@@ -114,7 +113,7 @@ void Matrix::solve_gauss(std::istream &in, std::ostream &out) {
         read_matrix_inp(in);
     }
     print_matrix(out);
-    diagonalize();
+    triangulation();
     double det = determinant_in_diagonalized();
     out << "Determinant is: " << det << std::endl;
     normalize();

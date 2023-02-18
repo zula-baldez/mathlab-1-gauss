@@ -14,7 +14,7 @@ public:
 
     void read_matrix_inp(std::istream& in);
 
-    void diagonalize();
+    void triangulation();
 
     void normalize();
 
