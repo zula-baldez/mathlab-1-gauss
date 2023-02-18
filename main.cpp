@@ -1,10 +1,14 @@
 #include <iostream>
 #include <algorithm>
 #include "Matrix.h"
+#include "RandomMatrix.h"
+
 
 using namespace std;
 
 int main() {
-    Matrix matrix;
-    matrix.solve_gauss(cin, cout);
+    Matrix rm;
+    rm.solve_gauss(cin, cout);
+
+
 }

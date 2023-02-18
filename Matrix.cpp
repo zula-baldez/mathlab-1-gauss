@@ -110,7 +110,10 @@ void Matrix::print_matrix(std::ostream &out) {
 
 
 void Matrix::solve_gauss(std::istream &in, std::ostream &out) {
-    read_matrix_inp(in);
+    if(m_data.empty()) {
+        read_matrix_inp(in);
+    }
+    print_matrix(out);
     diagonalize();
     double det = determinant_in_diagonalized();
     out << "Determinant is: " << det << std::endl;
@@ -123,4 +126,6 @@ void Matrix::solve_gauss(std::istream &in, std::ostream &out) {
         out << 'x' << idx + 1 << ": " << ans[idx] << std::endl;
     }
 }
+
+
 

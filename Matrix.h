@@ -11,9 +11,6 @@
 class Matrix {
 public:
     Matrix() = default;
-    explicit Matrix(std::vector<Row> data) {
-        this->m_data = std::move(data);
-    }
 
     void read_matrix_inp(std::istream& in);
 
@@ -31,8 +28,11 @@ public:
     Row &operator[](int index) const;
 
 
-    std::vector<Row> get_data() const {
+    [[nodiscard]] std::vector<Row> get_data() const {
         return m_data;
+    }
+    void set_data(std::vector<Row> data) {
+        m_data = std::move(data);
     }
 private:
     std::vector<Row> m_data;
