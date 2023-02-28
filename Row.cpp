@@ -6,10 +6,10 @@
 #include "Row.h"
 //decreases index automatically
 double Row::operator[](int index) const {
-    if(index <= 0 || index > get_size()) {
+    if(index < 0 || index >= get_size()) {
         throw std::runtime_error("wrong index in Row!");
     } else {
-        return raw_data[index-1];
+        return raw_data[index];
     }
 }
 
@@ -23,16 +23,16 @@ Row Row::operator*(double num) {
 
 Row Row::operator+(const Row& raw) const {
     Row raw_new;
-    for(int i = 1; i <= get_size(); i++) {
-        raw_new.add( (*this)[i] + raw[i]);
+    for(int i = 0; i < get_size(); i++) {
+        raw_new.add( raw_data[i] + raw[i]);
     }
     return raw;
 }
 
 Row Row::operator-(const Row& raw) const {
     Row raw_new;
-    for(int i = 1; i <= get_size(); i++) {
-        raw_new.add( (*this)[i] - raw[i]);
+    for(int i = 0; i < get_size(); i++) {
+        raw_new.add( raw_data[i] - raw[i]);
     }
     return raw_new;
 }
